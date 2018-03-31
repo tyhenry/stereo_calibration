@@ -421,7 +421,7 @@ bool ofApp::fullCalibration()
 		ok = stereoCalibrate();
 	}
 	if (ok) {
-		auto res = ofSystemLoadDialog("choose folder where to save calibration files (L_calib.yml, R_calib.yml, stereo_calib.yml)", true, ofToDataPath("", true));
+		auto res = ofSystemLoadDialog("choose folder where to save calibration files (L_calib.yml, R_calib.yml, stereo_calib.yml)", true, ofToDataPath("cal_imgs", true));
 		if (res.bSuccess) {
 			ok = ok && saveIntrinsics(res.getPath(), true);
 			ok = ok && saveStereoCalibration(res.getPath(), true);
@@ -615,7 +615,7 @@ void ofApp::keyReleased(int key) {
 	else if (key == 'l' || key == 'L') {
 
 		// load calibration files from disk
-		auto res = ofSystemLoadDialog("load calibration files from folder (L_calib.yml, R_calib.yml, stereo_calib.yml", true, ofToDataPath("cal_imgs", true));
+		auto res = ofSystemLoadDialog("load calibration files from folder (L_calib.yml, R_calib.yml, stereo_calib.yml)", true, ofToDataPath("cal_imgs", true));
 		if (res.bSuccess) {
 			loadCalibration(res.getPath(), true);
 		}
